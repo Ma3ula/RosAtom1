@@ -12,7 +12,7 @@ data = {
     "Наст": "https://avatars.mds.yandex.net/i?id=3d5b7f7a92db676dfdb0f6065e459df7_l-4767749-images-thumbs&n=13",
     "Носы": "https://www.meme-arsenal.com/memes/6d6374a0c5862438a8f156db3ca19117.jpg",
     "Нимф": "https://avatars.mds.yandex.net/i?id=bfb2d8c523742ef8126f457a7ca5381acd79457c-10637828-images-thumbs&n=13",
-    "Нитрогениум": "https://reword.su/online/api/image/?wordId=855&file=b1_0019b.jpg&dict=bd"
+    "Нитрогениум": "https://otvet.imgsmail.ru/download/u_8f3a56501030f062380a680574179b6e_800.gif"
 }
 
 IdFile = open('idFile.txt', 'r')
