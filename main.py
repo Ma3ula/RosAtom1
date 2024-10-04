@@ -27,7 +27,7 @@ def send_info(message):
 
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
-    bot.reply_to(message, "Я не понимаю. Напиши 'информация' для получения данных.")
+    bot.reply_to(message, "Я не понимаю. Напиши «информация» для получения данных.")
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     bot.polling(none_stop=True)
