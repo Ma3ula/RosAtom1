@@ -15,15 +15,32 @@ data = {
     "Нитрогениум": "https://reword.su/online/api/image/?wordId=855&file=b1_0019b.jpg&dict=bd"
 }
 
+IdFile = open('idFile.txt', 'r')
+IdUser = set()
+for user in IdFile:
+    IdUser.add(user.strip())
+IdFile.close()
+
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    bot.reply_to(message, "Привет! Как в книге Лема, я выдам  информацию с фотографиями следующих слов: Нимбы, Наушники, Нейтроны, Наст, Носы, Нимф и Нитрогениум. Напиши «информация», чтобы получить информацию о предметах.")
+    txt = ("Привет! Как в книге Лема, я выдам  информацию с фотографиями следующих слов: "
+           "Нимбы, Наушники, Нейтроны, Наст, Носы, Нимф и Нитрогениум. Напиши «информация», "
+           "чтобы получить информацию о предметах.")
+
+    IdFile = open('IdFile.txt', 'a')
+
+    if not str(message.chat.id) in IdUser:
+        IdFile.write(str(message.chat.id) + '\n')
+        IdUser.add(message.chat.id)
+
+    bot.send_message(message.chat.id, txt)
 
 @bot.message_handler(func=lambda message: message.text.lower() == 'информация')
 def send_info(message):
-    for item in data:
-        bot.send_message(message.chat.id, f"Информация о {item}:")
-        bot.send_photo(message.chat.id, data[item])
+    for user in IdUser:
+        for item in data:
+            bot.send_message(message.chat.id, f"Информация о {item}:")
+            bot.send_photo(message.chat.id, data[item])
 
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
